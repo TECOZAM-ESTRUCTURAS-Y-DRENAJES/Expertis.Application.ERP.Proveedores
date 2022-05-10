@@ -2343,7 +2343,7 @@ Public Class MntoProveedores
         Me.ntbTotalPagar.Location = New System.Drawing.Point(574, 140)
         Me.ntbTotalPagar.Name = "ntbTotalPagar"
         Me.ntbTotalPagar.Size = New System.Drawing.Size(121, 21)
-        Me.ntbTotalPagar.TabIndex = 22
+        Me.ntbTotalPagar.TabIndex = 25
         '
         'lblTotalPagar
         '
@@ -2360,7 +2360,7 @@ Public Class MntoProveedores
         Me.ntbTotalGastos.Location = New System.Drawing.Point(347, 140)
         Me.ntbTotalGastos.Name = "ntbTotalGastos"
         Me.ntbTotalGastos.Size = New System.Drawing.Size(121, 21)
-        Me.ntbTotalGastos.TabIndex = 20
+        Me.ntbTotalGastos.TabIndex = 24
         '
         'lblTotalGastos
         '
@@ -2377,7 +2377,7 @@ Public Class MntoProveedores
         Me.ntbTotalAlquiler.Location = New System.Drawing.Point(111, 140)
         Me.ntbTotalAlquiler.Name = "ntbTotalAlquiler"
         Me.ntbTotalAlquiler.Size = New System.Drawing.Size(121, 21)
-        Me.ntbTotalAlquiler.TabIndex = 18
+        Me.ntbTotalAlquiler.TabIndex = 34
         '
         'lblTotalAlquiler
         '
@@ -2394,7 +2394,7 @@ Public Class MntoProveedores
         Me.ntbvarios.Location = New System.Drawing.Point(348, 102)
         Me.ntbvarios.Name = "ntbvarios"
         Me.ntbvarios.Size = New System.Drawing.Size(121, 21)
-        Me.ntbvarios.TabIndex = 16
+        Me.ntbvarios.TabIndex = 23
         '
         'lblvarios
         '
@@ -2411,7 +2411,7 @@ Public Class MntoProveedores
         Me.ntbgas.Location = New System.Drawing.Point(348, 75)
         Me.ntbgas.Name = "ntbgas"
         Me.ntbgas.Size = New System.Drawing.Size(121, 21)
-        Me.ntbgas.TabIndex = 14
+        Me.ntbgas.TabIndex = 22
         '
         'lblgas
         '
@@ -2428,7 +2428,7 @@ Public Class MntoProveedores
         Me.ntbagua.Location = New System.Drawing.Point(348, 48)
         Me.ntbagua.Name = "ntbagua"
         Me.ntbagua.Size = New System.Drawing.Size(121, 21)
-        Me.ntbagua.TabIndex = 12
+        Me.ntbagua.TabIndex = 21
         '
         'lblagua
         '
@@ -2445,7 +2445,7 @@ Public Class MntoProveedores
         Me.ntbretencion.Location = New System.Drawing.Point(111, 102)
         Me.ntbretencion.Name = "ntbretencion"
         Me.ntbretencion.Size = New System.Drawing.Size(121, 21)
-        Me.ntbretencion.TabIndex = 10
+        Me.ntbretencion.TabIndex = 33
         '
         'lblretencion
         '
@@ -2462,7 +2462,7 @@ Public Class MntoProveedores
         Me.ntbiva.Location = New System.Drawing.Point(111, 75)
         Me.ntbiva.Name = "ntbiva"
         Me.ntbiva.Size = New System.Drawing.Size(121, 21)
-        Me.ntbiva.TabIndex = 8
+        Me.ntbiva.TabIndex = 32
         '
         'lbliva
         '
@@ -2479,7 +2479,7 @@ Public Class MntoProveedores
         Me.ntbrenta.Location = New System.Drawing.Point(111, 48)
         Me.ntbrenta.Name = "ntbrenta"
         Me.ntbrenta.Size = New System.Drawing.Size(121, 21)
-        Me.ntbrenta.TabIndex = 6
+        Me.ntbrenta.TabIndex = 31
         '
         'lblrenta
         '
@@ -2512,7 +2512,7 @@ Public Class MntoProveedores
         Me.ntbluz.Location = New System.Drawing.Point(348, 21)
         Me.ntbluz.Name = "ntbluz"
         Me.ntbluz.Size = New System.Drawing.Size(121, 21)
-        Me.ntbluz.TabIndex = 2
+        Me.ntbluz.TabIndex = 20
         '
         'lblluz
         '
@@ -2529,7 +2529,7 @@ Public Class MntoProveedores
         Me.ntbfianza.Location = New System.Drawing.Point(111, 21)
         Me.ntbfianza.Name = "ntbfianza"
         Me.ntbfianza.Size = New System.Drawing.Size(121, 21)
-        Me.ntbfianza.TabIndex = 0
+        Me.ntbfianza.TabIndex = 30
         '
         'lblfianza
         '
@@ -4155,50 +4155,61 @@ Public Class MntoProveedores
     End Sub
 
 #Region "Pestaña Pagos"
-    Private Sub CalcularAlquiler()
-        ntbTotalAlquiler.Value = Nz(ntbrenta.Value, 0) + Nz(ntbiva.Value, 0) + Nz(ntbretencion.Value, 0)
 
+    Private Sub CalcularAlquiler()
+        ntbTotalAlquiler.Value = ntbrenta.Value + ntbiva.Value + ntbretencion.Value
     End Sub
     Private Sub CalcularGastos()
-        ntbTotalGastos.Value = Nz(ntbluz.Value, 0) + Nz(ntbagua.Value, 0) + Nz(ntbgas.Value, 0) + Nz(ntbvarios.Value, 0)
-
+        ntbTotalGastos.Value = ntbluz.Value + ntbagua.Value + ntbgas.Value + ntbvarios.Value
     End Sub
     Private Sub CalcularTotal()
-        ntbTotalPagar.Value = Nz(ntbTotalAlquiler.Value, 0) + Nz(ntbTotalGastos.Value, 0)
-    End Sub
-
-    Private Sub ntbrenta_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ntbrenta.ValueChanged
-        CalcularAlquiler()
-        CalcularTotal()
-    End Sub
-    Private Sub ntbiva_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ntbiva.ValueChanged
-        CalcularAlquiler()
-        CalcularTotal()
-    End Sub
-    Private Sub ntbretencion_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ntbretencion.ValueChanged
-        CalcularAlquiler()
-        CalcularTotal()
-    End Sub
-    Private Sub ntbluz_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ntbluz.ValueChanged
-        CalcularGastos()
-        CalcularTotal()
-    End Sub
-    Private Sub ntbagua_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ntbagua.ValueChanged
-        CalcularGastos()
-        CalcularTotal()
-    End Sub
-
-    Private Sub ntbgas_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ntbgas.ValueChanged
-        CalcularGastos()
-        CalcularTotal()
-    End Sub
-    Private Sub ntbvarios_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ntbvarios.ValueChanged
-        CalcularGastos()
-        CalcularTotal()
+        ntbTotalPagar.Value = ntbTotalAlquiler.Value + ntbTotalGastos.Value
     End Sub
 
 #End Region
 
+    Private Sub ntbluz_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbluz.TextChanged
+        CalcularGastos()
+        CalcularTotal()
+    End Sub
 
- 
+    Private Sub ntbagua_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbagua.TextChanged
+        CalcularGastos()
+        CalcularTotal()
+    End Sub
+
+    Private Sub ntbgas_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbgas.TextChanged
+        CalcularGastos()
+        CalcularTotal()
+    End Sub
+
+    Private Sub ntbvarios_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbvarios.TextChanged
+        CalcularGastos()
+        CalcularTotal()
+    End Sub
+
+    Private Sub ntbfianza_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbfianza.TextChanged
+        CalcularAlquiler()
+        CalcularTotal()
+    End Sub
+
+    Private Sub ntbrenta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbrenta.TextChanged
+        CalcularAlquiler()
+        CalcularTotal()
+    End Sub
+
+    Private Sub ntbiva_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbiva.TextChanged
+        CalcularAlquiler()
+        CalcularTotal()
+    End Sub
+
+    Private Sub ntbretencion_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbretencion.TextChanged
+        CalcularAlquiler()
+        CalcularTotal()
+    End Sub
+
+    Private Sub ntbTotalAlquiler_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ntbTotalAlquiler.TextChanged
+        CalcularAlquiler()
+        CalcularTotal()
+    End Sub
 End Class
